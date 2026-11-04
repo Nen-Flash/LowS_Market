@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+node_modules/
+_site/
+dist/
+coverage/
+qa/
+tmp/
+research/
+*.log
+*.zip
+.env
+.env.*
+!.env.example
