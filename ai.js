@@ -161,7 +161,7 @@ export function initAssistant(ctx) {
     const area=$('#ai-conversation');area.scrollTop=area.scrollHeight;
     $('#ai-query').focus({preventScroll:true});
   }
-  dialog.addEventListener('close',()=>{document.body.style.overflow='';lastFocus?.isConnected&&lastFocus.focus({preventScroll:true});});
+  dialog.addEventListener('close',()=>{document.body.style.overflow=document.querySelector('dialog[open]')?'hidden':'';if(!document.querySelector('dialog[open]'))lastFocus?.isConnected&&lastFocus.focus({preventScroll:true});});
   dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)hide();}});
   $('#ai-query-form').addEventListener('submit',event=>{event.preventDefault();const value=$('#ai-query').value;if(value.trim())send(value);else $('#ai-query').focus();});
   document.addEventListener('click',event=>{
