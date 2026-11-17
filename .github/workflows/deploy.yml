@@ -29,7 +29,7 @@ jobs:
       - name: Collect website files
         run: |
           mkdir -p _site
-          cp index.html styles.css app.js data.js portals.js portals.css ai.js ai.css .nojekyll _site/
+          cp index.html styles.css app.js data.js portals.js portals.css ai.js ai.css food-check.js food-check.css .nojekyll _site/
           cp -R assets _site/assets
 
       - name: Upload website artifact

@@ -1,3 +1,4 @@
+import { initFoodCheck } from './food-check.js';
 // A deterministic, local prototype of AI-assisted workflows. No model/API call.
 // Keep this pure response contract when connecting a real model behind a server.
 export function createDemoReply(input, context) {
@@ -192,6 +193,7 @@ export function initAssistant(ctx) {
   window.addEventListener('lows:role-changed',sync);
   window.addEventListener('lows:portal-rendered',sync);
   window.addEventListener('hashchange',()=>{if(dialog.open)hide();sync();});
+  initFoodCheck({beforeOpen:()=>{if(dialog.open)hide();},icon});
   sync();
   return {show,context};
 }

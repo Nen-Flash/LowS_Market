@@ -40,6 +40,18 @@ Merchant price suggestions target discounts of 70% for items expiring today, 60%
 
 The response contract lives in `ai.js`. A real AI integration would require a server endpoint that protects the API key and validates responses. Do not put secret keys in GitHub Pages files.
 
+## Food photo and date check
+
+On phones, tap **Scan food** below the catalog assistant banner. On any screen, open **LowS AI → Check a product photo**. Use **Take a photo** for the rear-camera picker or **Choose a photo** for the gallery. Camera capture behavior depends on the phone and browser.
+
+**Read date from photo** runs real Tesseract.js text recognition locally, using English and Russian language data. First use needs internet to download OCR assets. Photos remain in memory and are removed when the dialog closes; they are not uploaded or stored in localStorage. JPEG, PNG and WebP are recommended; unsupported phone image formats show a fallback message. Maximum file size is 15 MB.
+
+OCR may find production dates as well as expiry dates. It never automatically identifies a date as the expiry date. Select a suggestion or enter a date, choose **Use by** or **Best before**, and confirm it against the packaging. Numeric date suggestions use day/month/year. Storage and after-opening instructions must also be checked.
+
+A past use-by date produces a warning against eating the product. A future date is shown only as a date comparison, never a safety guarantee. Best-before dates concern quality. The **Check the appearance** section is a manual checklist; no visual AI model is connected. A photo cannot detect harmful bacteria or certify freshness. See [Food Standards Agency guidance](https://www.food.gov.uk/safety-hygiene/best-before-and-use-by-dates).
+
+The feature is implemented in `food-check.js` and `food-check.css`. Tesseract.js 6.0.1 and its Apache license are included in `assets/vendor/tesseract/`. No secret API key or backend is needed.
+
 ## Run locally
 
 From the project folder:
